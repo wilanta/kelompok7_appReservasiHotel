@@ -1,3 +1,4 @@
+# Libraries
 import json
 import os
 
@@ -23,18 +24,19 @@ def emailExists(email, users):
 
 
 # Register Process
-def createRegister(name, number, email, password, userLevel):
+def createRegister(userId, name, number, email, password, userLevel):
     users = loadUsers()
 
     if emailExists(email, users):
         return False, "Email sudah terdaftar!"
 
     user = {
-        "name": name,
-        "number": number,
+        "user_id": userId,
+        "fullname": name.lower(),
+        "phone_number": number,
         "email": email,
         "password": password,
-        "userLevel": userLevel
+        "user_level": userLevel
     }
 
     users.append(user)
@@ -48,6 +50,6 @@ def processLogin(email, password):
 
     for user in users:
         if user["email"] == email and user["password"] == password:
-            return True, f"Login berhasil! Selamat datang, {user['name']}"
+            return True, f"Login berhasil! Selamat datang, {user['fullname'].title()}", user['fullname'], user['user_level']
 
-    return False, "Email atau password salah!"
+    return False, "Email atau password salah!", "", ""

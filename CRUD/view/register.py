@@ -1,16 +1,22 @@
-from CRUD.utils.clear import clear
+# Pages Module
 from main import main
 from .registerHotel import registerHotelView
 from .login import loginView
+
+# Operation Module
 from CRUD.operation.auth import createRegister
 
-import time
+# Utilities Module
+from CRUD.utils.clear import clear
+from CRUD.utils.randomId import idRandom
+from CRUD.utils.messageCountdown import messageNcountdown
 
+# Main Program
 def registerView(userLevel):
     clear()
     
     # Title
-    if userLevel == 0:
+    if userLevel == "visitor":
         print("REGISTER USER")
     else: 
         print("REGISTER HOTEL")
@@ -18,6 +24,7 @@ def registerView(userLevel):
     print("===========================")
     
     # Form
+    userId = idRandom()
     name = input("Nama\t: ")
     number = input("Nomor Telepon\t: ")
     email = input("Email\t: ")
@@ -31,10 +38,20 @@ def registerView(userLevel):
         password = input("Password\t: ")
         rePassword = input("Ulangi Password\t: ")
     
-    if name == 0 and number == 0 and email == 0 and password == 0 and rePassword == 0:
+    # Move to previous page
+    if name == "0" and number == "0" and email == "0" and password == "0" and rePassword == "0":
         main()
-    elif userLevel == 0:
+        
+    # Empty input
+    elif name == "" or number == "" or password == "":
+        messageNcountdown("Harap masukkan data anda dengan lengkap!")
+        # Redirect to register user
+        registerView(userLevel)
+        
+    # Level user : hotel visitor
+    elif userLevel == "visitor":
         result, message = createRegister(
+            userId,
             name,
             number,
             email,
@@ -43,32 +60,18 @@ def registerView(userLevel):
         )
         
         if result:
-            # Result message
-            print(f"{message}\n")
-            
-            # Countdown
-            seconds = 5
-            for i in range(seconds, 0, -1):
-                print(f"redirect dalam {i}...")
-                time.sleep(1)
-            
-            # Redirect
+            messageNcountdown(message)
+            # Redirect to login
             loginView()
         else:
-            # Result message
-            print(f"{message}\n")
-            
-            # Countdown
-            seconds = 5
-            for i in range(seconds, 0, -1):
-                print(f"redirect dalam {i}...")
-                time.sleep(1)
-                
-            # Redirect
+            messageNcountdown(message)
+            # Redirect to register user
             registerView(userLevel)
-            
-    elif userLevel == 1:
+    
+    # Level user : hotel admin 
+    elif userLevel == "admin":
         result, message = createRegister(
+            userId,
             name,
             number,
             email,
@@ -78,24 +81,10 @@ def registerView(userLevel):
         
         # Result message
         if result:
-            print(message)
-            
-            # Countdown
-            seconds = 5
-            for i in range(seconds, 0, -1):
-                print(f"redirect dalam {i}...")
-                time.sleep(1)
-            
-            registerHotelView()
+            messageNcountdown(message)
+            # Redirect to register hotel
+            registerHotelView(userId)
         else:
-            # Result message
-            print(f"{message}\n")
-            
-            # Countdown
-            seconds = 5
-            for i in range(seconds, 0, -1):
-                print(f"redirect dalam {i}...")
-                time.sleep(1)
-                
-            # Redirect
+            messageNcountdown(message)
+            # Redirect to register user
             registerView(userLevel)
