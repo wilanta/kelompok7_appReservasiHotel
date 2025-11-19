@@ -1,0 +1,23 @@
+[
+    {
+        "name": "wildhan dzikrihantara",
+        "number": "083875800697",
+        "email": "dzikriwildhan@ipb.ac.id",
+        "password": "abcdefgh",
+        "userLevel": 0
+    },
+    {
+        "name": "niku",
+        "number": "083128419482",
+        "email": "a@gmail.com",
+        "password": "abc",
+        "userLevel": 0
+    },
+    {
+        "name": "omar",
+        "number": "08737723",
+        "email": "b@gmail.com",
+        "password": "abc",
+        "userLevel": 0
+    }
+]
