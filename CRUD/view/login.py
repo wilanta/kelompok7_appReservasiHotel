@@ -1,3 +1,5 @@
+import state
+
 # Page Module
 from main import main
 
@@ -24,6 +26,9 @@ def loginView():
 
     result, message, username, userLevel = processLogin(email, password)
     if result:
+        state.IS_LOGGED_IN = result
+        state.USER_LEVEL = userLevel
+        state.USERNAME = username
         messageNcountdown(message)
         # Redirect to main menu
         if userLevel == "visitor":

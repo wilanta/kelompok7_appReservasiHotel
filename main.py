@@ -3,10 +3,13 @@ import CRUD.view as view
 
 import CRUD.operation.hotel as hotel
 
+# State Global Variable
+import state
+
 # Utillities Module
 from CRUD.utils.clear import clear
 
-def main(isUserLoggedIn=False, userLevel="visitor", username=""):
+def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username=state.USERNAME):
     # User logged in as visitor
     if isUserLoggedIn and userLevel == "visitor":
         while True:
@@ -25,7 +28,7 @@ def main(isUserLoggedIn=False, userLevel="visitor", username=""):
             user_option = input("\nMasukan opsi : ")
 
             match user_option:
-                case "1": hotel.searchHotels() # fateeh
+                case "1": hotel.searchHotels()
                 case "2": pass # omar
                 case "3": pass # omar
                 case "0": main()
