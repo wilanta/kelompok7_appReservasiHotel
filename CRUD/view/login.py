@@ -19,7 +19,7 @@ def loginView():
     email = input("Email\t\t: ")
     if email.lower().strip() == "exit":
         main()
-    
+
     password = input("Password\t: ")
 
     result, message, username, userLevel = processLogin(email, password)

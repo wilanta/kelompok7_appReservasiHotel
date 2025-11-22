@@ -18,7 +18,7 @@ def registerHotelView(userId):
     # Form
     name = input("Nama Hotel\t: ")
     address = input("Alamat Lengkap\t: ")
-    city = input("Kota\t: ")
+    city = input("Kota\t\t: ")
     province = input("Provinsi\t: ")  
     descHotel = input("Deskripsi Hotel\t: ")
     
