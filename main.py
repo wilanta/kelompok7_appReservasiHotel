@@ -27,7 +27,7 @@ def main(isUserLoggedIn=False, userLevel="visitor", username="", userId=None):
             match user_option:
                 case "1": hotel.searchHotels() # fateeh
                 case "2": pass # fateeh
-                case "3": view.profileView(userId)
+                case "3": view.profileView(userId, userLevel)
                 case "0": main()
                 case _: print("Pilihan tidak valid!")
 
@@ -50,7 +50,7 @@ def main(isUserLoggedIn=False, userLevel="visitor", username="", userId=None):
 
             match user_option:
                 case "1": pass
-                case "2": view.profileView(userId)
+                case "2": view.profileView(userId, userLevel)
                 case "0": main()
                 case _: print("Pilihan tidak valid!")
 

@@ -131,3 +131,15 @@ def changePassword(userId):
             print("Password salah!")
             continue
         break
+    
+# Delete Account (only for visitor)
+def deleteAccount(userId):
+    users = loadUsers()
+    
+    # Delete target ID
+    data = []
+    for user in users:
+        if user['user_id'] != userId:
+            data.append(user)
+    
+    saveUsers(data)

@@ -1,14 +1,14 @@
 # Page Module
-# from main import main
+from main import main
 
 # Operations Module
-from CRUD.operation.auth import searchUser, changeFullname, changeEmail, changePhoneNumber, changePassword
+from CRUD.operation.auth import searchUser, changeFullname, changeEmail, changePhoneNumber, changePassword, deleteAccount
 
 # Utilities Module
 from CRUD.utils.clear import clear
 
 # Main Program
-def profileView(userId):
+def profileView(userId, userLevel):
     clear()
     print("PROFILE")
     print("===========================")
@@ -26,6 +26,9 @@ def profileView(userId):
     print("2. Ubah Email")
     print("3. Ubah Nomor Telepon")
     print("4. Ubah Password")
+    
+    if userLevel == "visitor":
+        print("5. Hapus Akun")
     print("0. Kembali")
     
     user_option = input("\nMasukan opsi : ")
@@ -33,14 +36,20 @@ def profileView(userId):
     match user_option:
         case "1": 
             changeFullname(userId)
-            profileView(userId)
+            profileView(userId, userLevel)
         case "2": 
             changeEmail(userId)
-            profileView(userId)
+            profileView(userId, userLevel)
         case "3": 
             changePhoneNumber(userId)
-            profileView(userId)
+            profileView(userId, userLevel)
         case "4": 
             changePassword(userId)
-            profileView(userId)
+            profileView(userId, userLevel)
+        case "5":
+            if userLevel == "visitor":
+                deleteAccount(userId)
+                main()
+            else:
+                profileView(userId, userLevel)
         case _: print("Pilihan tidak valid!")
