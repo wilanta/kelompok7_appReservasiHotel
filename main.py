@@ -6,7 +6,7 @@ import CRUD.operation.hotel as hotel
 # Utillities Module
 from CRUD.utils.clear import clear
 
-def main(isUserLoggedIn=False, userLevel="visitor", username=""):
+def main(isUserLoggedIn=False, userLevel="visitor", username="", userId=None):
     # User logged in as visitor
     if isUserLoggedIn and userLevel == "visitor":
         while True:
@@ -27,7 +27,7 @@ def main(isUserLoggedIn=False, userLevel="visitor", username=""):
             match user_option:
                 case "1": hotel.searchHotels() # fateeh
                 case "2": pass # omar
-                case "3": pass # omar
+                case "3": view.profileView(userId)
                 case "0": main()
                 case _: print("Pilihan tidak valid!")
 
@@ -44,14 +44,16 @@ def main(isUserLoggedIn=False, userLevel="visitor", username=""):
             # option
             print("1. Daftar Tamu Hotel")
             print("2. Kelola Pesan & Rating Hotel")
-            print("3. Keluar")
+            print("3. Profile")
+            print("0. Keluar")
 
             user_option = input("\nMasukan opsi : ")
 
             match user_option:
                 case "1": pass # fateeh
                 case "2": pass # omar
-                case "3": main()
+                case "3": view.profileView(userId)
+                case "0": pass
                 case _: print("Pilihan tidak valid!")
 
     # User has been not logged in
