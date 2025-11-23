@@ -125,6 +125,7 @@ def changePassword(userId):
                 # Change Password Success
                 user['password'] = newPassword
                 saveUsers(users)
+                print("\nPassword berhasil diubah!")
                 break
         else:
             print("Password salah!")

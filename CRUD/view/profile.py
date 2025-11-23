@@ -34,7 +34,13 @@ def profileView(userId):
         case "1": 
             changeFullname(userId)
             profileView(userId)
-        case "2": changeEmail(userId)
-        case "3": changePhoneNumber(userId)
-        case "4": changePassword(userId)
+        case "2": 
+            changeEmail(userId)
+            profileView(userId)
+        case "3": 
+            changePhoneNumber(userId)
+            profileView(userId)
+        case "4": 
+            changePassword(userId)
+            profileView(userId)
         case _: print("Pilihan tidak valid!")
