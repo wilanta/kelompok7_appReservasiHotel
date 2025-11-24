@@ -10,7 +10,7 @@ def bookingView(hotel):
     while True:
         clear()
         if error:
-            print("Error dalam pengisian!")
+            print("Error saat pengisian!")
         print(f"Pesan Kamar di {hotel['name']}")
         print("[Isi \"exit\" pada isian untuk kembali ke menu]")
         check_in    = input("Waktu Check-in (YYYY-MM-DD) : ")
@@ -24,11 +24,13 @@ def bookingView(hotel):
         format_date = "%Y-%m-%d"
         check_in_date = datetime.datetime.strptime(check_in, format_date)
         check_out_date = datetime.datetime.strptime(check_out, format_date)
-        total_price = 0
+        total_price = 1
 
         if check_in_date and check_out_date and total_price and rooms and occupants:
-            result, message = booking(check_in_date, check_out_date, rooms, occupants, total_price,
-                                      state.USER_ID, hotel['id'])
+            result, message = booking(check_in_date.strftime(format_date),
+                                      check_out_date.strftime(format_date),
+                                      rooms, occupants, total_price,
+                                      state.USER_ID, hotel['hotel_id'])
 
             if result:
                 messageNcountdown(message)
