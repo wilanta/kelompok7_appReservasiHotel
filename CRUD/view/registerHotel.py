@@ -20,7 +20,8 @@ def registerHotelView(userId):
     address = input("Alamat Lengkap\t\t: ")
     city = input("Kota\t\t\t: ")
     province = input("Provinsi\t\t: ")
-    descHotel = input("Deskripsi Hotel\t\t: ")
+    descHotel = input("Deskripsi Hotel\t\t: ") 
+    price = input("Harga per Malam\t\t: ")
     roomAvailable = input("Ruangan yang Disediakan\t: ")
 
     # If all filled
@@ -31,6 +32,7 @@ def registerHotelView(userId):
             city,
             province,
             descHotel,
+            price,
             roomAvailable,
             userId
         )
