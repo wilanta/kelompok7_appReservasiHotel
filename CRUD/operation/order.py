@@ -20,7 +20,7 @@ def saveOrders(orders):
         json.dump(orders, f, indent=4)
 
 # Register Process
-def booking(check_in, check_out, room_count, occupants, price, rating, userId, hotelId):
+def booking(check_in, check_out, room_count, occupants, price, userId, hotelId, rating = 0):
     orders = loadOrders()
 
     order = {
