@@ -16,11 +16,12 @@ def registerHotelView(userId):
     print("===========================")
 
     # Form
-    name = input("Nama Hotel\t: ")
-    address = input("Alamat Lengkap\t: ")
-    city = input("Kota\t\t: ")
-    province = input("Provinsi\t: ")
-    descHotel = input("Deskripsi Hotel\t: ")
+    name = input("Nama Hotel\t\t: ")
+    address = input("Alamat Lengkap\t\t: ")
+    city = input("Kota\t\t\t: ")
+    province = input("Provinsi\t\t: ")
+    descHotel = input("Deskripsi Hotel\t\t: ")
+    roomAvailable = input("Ruangan yang Disediakan\t: ")
 
     # If all filled
     if name and address and city and province:
@@ -30,6 +31,7 @@ def registerHotelView(userId):
             city,
             province,
             descHotel,
+            roomAvailable,
             userId
         )
 

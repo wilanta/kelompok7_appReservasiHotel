@@ -23,7 +23,7 @@ def saveHotels(hotels):
         json.dump(hotels, f, indent=4)
 
 # Register Process
-def createHotels(name, address, city, province, descHotel, userId):
+def createHotels(name, address, city, province, descHotel, roomAvailable, userId):
     hotels = loadHotels()
 
     hotel = {
@@ -33,6 +33,7 @@ def createHotels(name, address, city, province, descHotel, userId):
         "city": city.lower(),
         "province": province.lower(),
         "desc_hotel": descHotel.lower(),
+        "room_available": roomAvailable,
         "overall_rating": 0,
         "user_id": userId
     }
