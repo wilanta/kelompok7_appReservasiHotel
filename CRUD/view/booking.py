@@ -1,7 +1,8 @@
 import datetime
 import state
-from CRUD.utils.clear import clear
 from CRUD.operation.order import booking
+from CRUD.utils.clear import clear
+from CRUD.utils.messageCountdown import messageNcountdown
 
 def bookingView(hotel):
     from main import main
@@ -26,8 +27,12 @@ def bookingView(hotel):
         total_price = 0
 
         if check_in_date and check_out_date and total_price and rooms and occupants:
-            booking(check_in_date, check_out_date, rooms, occupants, total_price, state.USER_ID,
-            hotel['id'])
+            result, message = booking(check_in_date, check_out_date, rooms, occupants, total_price,
+                                      state.USER_ID, hotel['id'])
+
+            if result:
+                messageNcountdown(message)
+                main(state.IS_LOGGED_IN, state.USER_LEVEL, state.USERNAME)
 
         else:
             error = True
