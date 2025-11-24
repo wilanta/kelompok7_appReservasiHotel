@@ -10,18 +10,18 @@ from CRUD.utils.messageCountdown import messageNcountdown
 
 def registerHotelView(userId):
     clear()
-    
+
     # Title
     print("DAFTARKAN HOTEL ANDA")
     print("===========================")
-    
+
     # Form
     name = input("Nama Hotel\t: ")
     address = input("Alamat Lengkap\t: ")
-    city = input("Kota\t: ")
-    province = input("Provinsi\t: ")  
+    city = input("Kota\t\t: ")
+    province = input("Provinsi\t: ")
     descHotel = input("Deskripsi Hotel\t: ")
-    
+
     # If all filled
     if name and address and city and province:
         result, message = createHotels(
@@ -32,7 +32,7 @@ def registerHotelView(userId):
             descHotel,
             userId
         )
-        
+
         messageNcountdown(message)
         # Redirect to login
         loginView()
@@ -40,5 +40,3 @@ def registerHotelView(userId):
         messageNcountdown("Harap lengkapi data hotel!")
         # Redirect to register hotel
         registerHotelView(userId)
-        
-    

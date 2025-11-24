@@ -3,10 +3,13 @@ import CRUD.view as view
 
 import CRUD.operation.hotel as hotel
 
+# State Global Variable
+import state
+
 # Utillities Module
 from CRUD.utils.clear import clear
 
-def main(isUserLoggedIn=False, userLevel="visitor", username="", userId=None):
+def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username=state.USERNAME, userId=None):
     # User logged in as visitor
     if isUserLoggedIn and userLevel == "visitor":
         while True:

@@ -1,4 +1,6 @@
 from CRUD.utils.randomId import idRandom
+from CRUD.view.booking import bookingView
+from CRUD.utils.clear import clear
 
 import json
 import os
@@ -48,20 +50,32 @@ def searchHotels(dataHotel = None):
 
         hasil = []
         for hotel in dataHotel:
-            if hotel['city'] == query:
+            if hotel['city'] == query or query in hotel['name']:
                 hasil.append(hotel)
 
         if len(hasil) > 0:
             print("===== HASIL =====")
-            for result in hasil:
+            for index, result in enumerate(hasil):
+                print(f"[{index + 1}.]")
                 print(f"Nama\t\t: {result['name']}")
                 print(f"Alamat\t\t: {result['address']}")
                 print(f"Kota\t\t: {result['city']}")
                 print(f"Provinsi\t: {result['province']}")
                 print(f"Ulasan\t\t: {result['overall_rating']}")
                 print(f"Deskripsi\t: {result['desc_hotel']}")
+                print("=" * 17)
         else:
             print("Hotel tidak ditemukan!")
 
-        if input("Cari lagi? (Y/T): ").upper().strip() == "T":
+        select = input("Pilih nomor hotel atau Cari lagi (0 untuk balik): ")
+
+        if select.isdigit() and int(select) == 0:
             break
+
+        if select.isdigit() and int(select) > 0:
+            try:
+                if int(select) - 1 <= len(hasil):
+                    bookingView(hasil[int(select)-1])
+                    break
+            except IndexError:
+                print("Error: Masukkan nilai yang sesuai!")
