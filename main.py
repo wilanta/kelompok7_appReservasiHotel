@@ -52,7 +52,7 @@ def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username
             user_option = input("\nMasukan opsi : ")
 
             match user_option:
-                case "1": pass
+                case "1": view.manageView(userId, userLevel, username)
                 case "2": view.profileView(userId, userLevel)
                 case "0": main()
                 case _: print("Pilihan tidak valid!")
