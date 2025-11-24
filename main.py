@@ -9,7 +9,7 @@ import state
 # Utillities Module
 from CRUD.utils.clear import clear
 
-def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username=state.USERNAME):
+def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username=state.USERNAME, userId=None):
     # User logged in as visitor
     if isUserLoggedIn and userLevel == "visitor":
         while True:
@@ -28,9 +28,9 @@ def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username
             user_option = input("\nMasukan opsi : ")
 
             match user_option:
-                case "1": hotel.searchHotels()
-                case "2": pass # omar
-                case "3": pass # omar
+                case "1": hotel.searchHotels() # fateeh
+                case "2": pass # fateeh
+                case "3": view.profileView(userId, userLevel)
                 case "0": main()
                 case _: print("Pilihan tidak valid!")
 
@@ -45,16 +45,16 @@ def main(isUserLoggedIn=state.IS_LOGGED_IN, userLevel=state.USER_LEVEL, username
             print("===========================")
 
             # option
-            print("1. Daftar Tamu Hotel")
-            print("2. Kelola Pesan & Rating Hotel")
-            print("3. Keluar")
+            print("1. Kelola Daftar Tamu Hotel")
+            print("2. Profile")
+            print("0. Keluar")
 
             user_option = input("\nMasukan opsi : ")
 
             match user_option:
-                case "1": pass # fateeh
-                case "2": pass # omar
-                case "3": main()
+                case "1": pass
+                case "2": view.profileView(userId, userLevel)
+                case "0": main()
                 case _: print("Pilihan tidak valid!")
 
     # User has been not logged in
