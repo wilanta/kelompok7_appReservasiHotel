@@ -52,7 +52,7 @@ def searchHotels(dataHotel = None):
 
         hasil = []
         for hotel in dataHotel:
-            if hotel['city'] == query or query in hotel['name']:
+            if query in hotel['city'].lower() or query in hotel['name'].lower():
                 hasil.append(hotel)
 
         if len(hasil) > 0:
@@ -69,7 +69,7 @@ def searchHotels(dataHotel = None):
         else:
             print("Hotel tidak ditemukan!")
 
-        select = input("Pilih nomor hotel atau Cari lagi (0 untuk balik): ")
+        select = input("Pilih nomor hotel atau Cari lagi (ketik 0): ")
 
         if select.isdigit() and int(select) == 0:
             break

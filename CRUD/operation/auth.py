@@ -1,6 +1,7 @@
 # Libraries
 import json
 import os
+import state
 
 DATA_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "users.json")
 DATA_FILE = os.path.abspath(DATA_FILE)
@@ -50,6 +51,7 @@ def processLogin(email, password):
 
     for user in users:
         if user["email"] == email and user["password"] == password:
+            state.USER_ID = user['user_id']
             return True, f"Login berhasil! Selamat datang, {user['fullname'].title()}", user['fullname'], user['user_id'], user['user_level']
 
     return False, "Email atau password salah!", "", "", ""
